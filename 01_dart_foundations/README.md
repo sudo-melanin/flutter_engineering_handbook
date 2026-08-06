@@ -1,16 +1,16 @@
 # Module 01 — Dart Foundations
 
-This module explores the Dart programming language from a Flutter engineer's perspective.
+## Objective
 
-Rather than focusing only on syntax, each lesson explains why Dart's features exist and how they support Flutter application development.
+Master the Dart language from a Flutter engineer's perspective.
 
 ## Lessons
 
 - [x] Lesson 01 — Introduction to Dart
-- [ ] Lesson 02 — Variables & Types
+- [x] Lesson 02 — Variables & Types
 - [ ] Lesson 03 — Functions
-- [ ] Lesson 04 — Classes
-- [ ] Lesson 05 — Objects
+- [ ] Lesson 04 — Objects
+- [ ] Lesson 05 — Classes
 - [ ] Lesson 06 — Constructors
 - [ ] Lesson 07 — Named Parameters
 - [ ] Lesson 08 — const vs final
