@@ -5,9 +5,7 @@ void main() {
 
   print("Dart is a programming language developed by Google.");
 
-  print(
-    "Flutter is a UI framework used to build cross-platform applications.",
-  );
+  print("Flutter is a UI framework used to build cross-platform applications.");
 
   print("");
 

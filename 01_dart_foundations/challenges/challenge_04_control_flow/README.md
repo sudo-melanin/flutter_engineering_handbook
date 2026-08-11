@@ -2,22 +2,43 @@
 
 ## Objective
 
-Build a small banking system that demonstrates Dart control flow using realistic business rules.
+Build a small banking system that uses Dart control flow to model realistic account and transaction behaviour.
 
-The challenge combines:
+This challenge puts the concepts from **Lesson 04 — Control Flow** into practice.
 
-* Variables
-* Functions
+You will work with:
+
+* Enums
+* `switch`
 * `if`
 * `else if`
 * `else`
-* Logical operators
-* `switch`
-* Enums
+* Logical conditions
+* `for`
+* `for-in`
+* `continue`
+* `break`
+* Functions
+* Collections
 
 ---
 
-## Part 1 — Account Status
+## Scenario
+
+You are building a simple banking system.
+
+The system needs to:
+
+1. Identify the account's status.
+2. Determine whether a withdrawal is allowed.
+3. Display transaction history.
+4. Display deposits while skipping withdrawals.
+5. Find the first large transaction.
+6. Calculate the total value of all transactions.
+
+---
+
+# Part 1 — Account Status
 
 Create an enum:
 
@@ -29,111 +50,219 @@ enum AccountStatus {
 }
 ```
 
-Create an account status variable:
+Create an account status variable.
 
-```dart
-AccountStatus status = AccountStatus.active;
-```
-
-Create:
+Then implement:
 
 ```dart
 void checkAccountStatus() {
-  // implementation
+  // ...
 }
 ```
 
-The function should display:
+Use `switch` to display an appropriate message for each account status.
 
-| Status      | Expected output                                                |
-| ----------- | -------------------------------------------------------------- |
-| `active`    | Account is active. Transactions are allowed.                   |
-| `suspended` | Account is suspended. Transactions are temporarily restricted. |
-| `closed`    | Account is closed. Please contact support.                     |
+The possible states are:
 
-Use `switch`.
+* Active
+* Suspended
+* Closed
 
 ---
 
-## Part 2 — Withdrawal
+# Part 2 — Withdrawal
 
-Create:
-
-```dart
-double accountBalance = 50000000;
-```
-
-Then create:
+Create an account balance and implement:
 
 ```dart
 void withdraw(double amount) {
-  // implementation
+  // ...
 }
 ```
 
 A withdrawal should only succeed when:
 
 1. The account is active.
-2. The amount is greater than zero.
+2. The withdrawal amount is greater than zero.
 3. The account has sufficient funds.
 
-Otherwise, display an appropriate message.
+Handle each failure condition appropriately.
+
+A withdrawal equal to the entire available balance should be allowed.
 
 ---
 
-## Required Test Cases
+# Part 3 — Display Transactions
 
-Test at least these scenarios:
+Create a collection containing both deposits and withdrawals.
+
+For example:
+
+```dart
+List<double> transactions = [
+  50000,
+  -25000,
+  100000,
+  -15000,
+  30000,
+];
+```
+
+Positive values represent deposits.
+
+Negative values represent withdrawals.
+
+Implement:
+
+```dart
+void displayTransactions() {
+  // ...
+}
+```
+
+Use a `for-in` loop to display every transaction.
+
+---
+
+# Part 4 — Display Deposits
+
+Implement:
+
+```dart
+void displayDeposits() {
+  // ...
+}
+```
+
+Use a loop and `continue` to skip negative transactions.
+
+Only deposits should be displayed.
+
+The important requirement is to demonstrate that `continue` skips the current iteration without stopping the entire loop.
+
+---
+
+# Part 5 — Find a Large Transaction
+
+Implement:
+
+```dart
+void findLargeTransaction() {
+  // ...
+}
+```
+
+Search through the transactions and find the **first transaction greater than ₦50,000**.
+
+Once it is found:
+
+1. Display the transaction.
+2. Use `break` to stop the loop.
+
+This demonstrates the difference between:
+
+```text
+continue → skip the current iteration
+break    → stop the loop
+```
+
+---
+
+# Part 6 — Transaction Summary
+
+Implement:
+
+```dart
+void displayTransactionSummary() {
+  // ...
+}
+```
+
+Use a loop to calculate the total value of all transactions.
+
+Do not manually add the values.
+
+The result should be calculated from the collection.
+
+---
+
+# Required Test Cases
+
+Test your withdrawal function with at least these scenarios.
 
 ### Test 1 — Successful withdrawal
 
 ```text
-Status: active
-Amount: 10,000
-Expected: withdrawal succeeds
+Account: Active
+Amount: ₦10,000
+Expected: Withdrawal succeeds
 ```
 
-### Test 2 — Insufficient balance
+### Test 2 — Entire balance
 
 ```text
-Status: active
-Amount: greater than balance
-Expected: insufficient balance
+Account: Active
+Amount: Equal to account balance
+Expected: Withdrawal succeeds
 ```
 
-### Test 3 — Invalid amount
+### Test 3 — Insufficient funds
 
 ```text
-Status: active
-Amount: -5,000
-Expected: invalid amount
+Account: Active
+Amount: Greater than account balance
+Expected: Withdrawal is rejected
 ```
 
-### Test 4 — Restricted account
+### Test 4 — Invalid amount
 
 ```text
-Status: suspended
-Amount: 10,000
-Expected: withdrawal is restricted
+Account: Active
+Amount: ₦0 or negative
+Expected: Withdrawal is rejected
+```
+
+### Test 5 — Restricted account
+
+```text
+Account: Suspended or Closed
+Amount: Valid withdrawal amount
+Expected: Withdrawal is rejected
 ```
 
 ---
 
-## Reflection
+# Reflection
 
-After completing the challenge, answer:
+After completing the challenge, answer these questions:
 
-1. When is `if/else` more appropriate than `switch`?
-2. Why are enums safer than arbitrary integers or strings for fixed states?
-3. What does `&&` mean?
-4. What does `!` do?
-5. What does exhaustive handling mean?
-6. Why does the order of conditions matter?
+1. What problem does control flow solve?
+2. What is the difference between `for` and `for-in`?
+3. When would you use `while` instead of `for`?
+4. What makes `do-while` different from `while`?
+5. What does `break` do?
+6. What does `continue` do?
+7. Why can a `while` loop become infinite?
+8. Why are enums useful when working with `switch`?
+9. Why should business rules be represented clearly in control flow?
 
 ---
 
-## Engineering Goal
+## How to Approach the Challenge
 
-The objective isn't simply to make the code compile.
+1. Read Lesson 04 first.
+2. Read the entire challenge before coding.
+3. Implement each function one at a time.
+4. Run your code frequently.
+5. Test the edge cases.
+6. Use `dart format .`.
+7. Use `dart analyze`.
+8. Review your implementation before comparing it with the solution.
 
-The objective is to translate real-world business rules into clear, maintainable program logic.
+### Important
+
+There can be multiple valid implementations.
+
+The goal is not to reproduce a specific solution.
+
+The goal is to understand how control flow can be used to express real-world application rules clearly and correctly.

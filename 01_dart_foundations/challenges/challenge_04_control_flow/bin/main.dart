@@ -1,38 +1,34 @@
-enum AccountStatus {
-  active,
-  suspended,
-  closed,
-}
+enum AccountStatus { active, suspended, closed }
 
 AccountStatus status = AccountStatus.active;
 double accountBalance = 50000000;
 
+List<double> transactions = [50000, -25000, 100000, -15000, 30000];
+
 void checkAccountStatus() {
-  switch (status) {
-    case AccountStatus.active:
-      print("Account is active. Transactions are allowed");
-
-    case AccountStatus.suspended:
-      print(
-        "Account is suspended. Transactions are temporarily restricted",
-      );
-
-    case AccountStatus.closed:
-      print("Account is closed. Please contact support");
-  }
+  // TODO: Use switch to display the account status.
 }
 
 void withdraw(double amount) {
-  if (status != AccountStatus.active) {
-    print("Inactive account. Withdrawal is restricted.");
-  } else if (amount <= 0) {
-    print("Invalid amount. Enter a valid amount.");
-  } else if (accountBalance < amount) {
-    print("Insufficient balance.");
-  } else {
-    print("Withdrawal successful.");
-    accountBalance -= amount;
-  }
+  // TODO: Validate account status, amount and balance.
+}
+
+void displayTransactions() {
+  // TODO: Use a for-in loop to display every transaction.
+}
+
+void displayDeposits() {
+  // TODO: Use continue to skip withdrawals.
+}
+
+void findLargeTransaction() {
+  // TODO: Find the first transaction greater than 50,000.
+  // Use break after finding it.
+}
+
+void displayTransactionSummary() {
+  // TODO: Use a loop to calculate the total value
+  // of all transactions.
 }
 
 void main() {
@@ -40,5 +36,11 @@ void main() {
 
   withdraw(10000);
 
-  print("Remaining balance: ₦$accountBalance");
+  displayTransactions();
+
+  displayDeposits();
+
+  findLargeTransaction();
+
+  displayTransactionSummary();
 }
